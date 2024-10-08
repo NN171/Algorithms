@@ -80,7 +80,7 @@ public class Main {
             numStack.push(i);
         }
 
-        CustomStack<Integer> newStack = (CustomStack<Integer>) numStack.clone();
+        CustomStack<Integer> newStack = numStack.clone();
 
         for (int i = newStack.size()-1; i > 0; i--) {
             int popNum = newStack.pop();
@@ -92,5 +92,7 @@ public class Main {
 
         //System.out.println(numStack.getByElement(3));
         numStack.getStack();
+        System.out.println();
+        newStack.getStack();
     }
 }
