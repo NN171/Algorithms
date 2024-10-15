@@ -35,10 +35,11 @@ public class CustomStack<T> implements Iterable<T>, Cloneable {
         return array[index];
     }
 
-    public void isEmpty() {
+    public boolean isEmpty() {
         if (index == -1) {
-            throw new EmptyStackException();
+            return true;
         }
+        return false;
     }
 
     public void isFull() {

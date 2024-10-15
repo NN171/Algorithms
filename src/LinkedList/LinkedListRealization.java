@@ -66,7 +66,7 @@ public class LinkedListRealization<T> implements Iterable<T> {
         else if (index == size-1) {
             addLast(data);
         }
-        else {
+        else if (index > size/2){
             Node<T> newNode = new Node<>(data);
             Node<T> current = head;
 
@@ -87,6 +87,46 @@ public class LinkedListRealization<T> implements Iterable<T> {
                 current.previous = newNode;
                 size++;
             }
+        }
+        else {
+            Node<T> newNode = new Node<>(data);
+            Node<T> current = tail;
+
+            int currPosition = size-1;
+
+            while (current != null && currPosition > index) {
+                current = current.next;
+                currPosition--;
+            }
+
+            if (current == null) {
+                addLast(data);
+            }
+            else {
+                newNode.next = current;
+                newNode.previous = current.previous;
+                current.previous.next = newNode;
+                current.previous = newNode;
+                size++;
+            }
+        }
+    }
+
+    public void getFromEnd() {
+
+        Node<T> currentNode = tail;
+        while (currentNode != null) {
+            System.out.println(currentNode.data);
+            currentNode = currentNode.previous;
+        }
+    }
+
+    public void getFromStart() {
+
+        Node<T> currentNode = head;
+        while (currentNode != null) {
+            System.out.println(currentNode.data);
+            currentNode = currentNode.next;
         }
     }
 

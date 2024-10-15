@@ -9,7 +9,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException{
 
-        final Minion bob = new Minion(27, "Bob", 1);
+
+
+        final Minion bob1 = new Minion(24, "Bob", 1);
+        final Minion bob2 = new Minion(24, "Bob", 2);
         final Minion rob = new Minion(24, "Rob", 2);
         final Minion jacob = new Minion(32, "Jacob", 3);
         final Minion jason = new Minion(13, "Jason", 2);
@@ -28,25 +31,29 @@ public class Main {
 //
 //        minionsLinkedList.edit(new Minion(51, "Donald", 1), 2);
 //
+////        minionsLinkedList.getFromEnd();
+////        System.out.println();
+////
+////        minionsLinkedList.getFromStart();
+//
 //        for (Minion minion : minionsLinkedList) {
 //            System.out.println(minion.toString());
 //        }
-//
-//        System.out.println();
 
-//        MinionComparator comparator = new MinionComparator();
-//        List<Minion> minionsList = new ArrayList<>();
-//
-//        minionsList.add(bob);
-//        minionsList.add(rob);
-//        minionsList.add(jacob);
-//        minionsList.add(jason);
-//
-//        minionsList.sort(comparator);
-//
-//        for (Minion minion : minionsList) {
-//            System.out.println(minion);
-//        }
+        MinionComparator comparator = new MinionComparator();
+        List<Minion> minionsList = new ArrayList<>();
+
+        minionsList.add(bob1);
+        minionsList.add(bob2);
+        minionsList.add(rob);
+        minionsList.add(jacob);
+        minionsList.add(jason);
+
+        minionsList.sort(comparator);
+
+        for (Minion minion : minionsList) {
+            System.out.println(minion);
+        }
 //
 //        System.out.println();
 
@@ -74,25 +81,44 @@ public class Main {
 //            System.out.println(minion.toString());
 //        }
 
-        CustomStack<Integer> numStack = new CustomStack<>();
 
-        for (int i = 1; i <= 9; i++) {
-            numStack.push(i);
-        }
+//        for (int i = 1; i <= 9; i++) {
+//            numStack.push(i);
+//        }
+//
+//        CustomStack<Integer> newStack = numStack.clone();
+//
+//        for (int i = newStack.size()-1; i > 0; i--) {
+//            int popNum = newStack.pop();
+//            if (popNum == 3) {
+//                System.out.println(popNum);
+//                break;
+//            }
+//        }
+//
+//        //System.out.println(numStack.getByElement(3));
+//        numStack.getStack();
+//        System.out.println();
 
-        CustomStack<Integer> newStack = numStack.clone();
+        final String brackets = "{[{[}]]}";
 
-        for (int i = newStack.size()-1; i > 0; i--) {
-            int popNum = newStack.pop();
-            if (popNum == 3) {
-                System.out.println(popNum);
-                break;
+        CustomStack<Character> numStack = new CustomStack<>();
+
+        for (char bracket : brackets.toCharArray()) {
+            if (bracket == '[' || bracket == '{' || bracket == '(') {
+                numStack.push(bracket);
+            }
+            else if (bracket == ']' && numStack.peek() == '['
+                    || bracket == '}' && numStack.peek() == '{'
+                    || bracket == ')' && numStack.peek() == '(') {
+                numStack.pop();
             }
         }
-
-        //System.out.println(numStack.getByElement(3));
-        numStack.getStack();
-        System.out.println();
-        newStack.getStack();
+        if (numStack.isEmpty()) {
+            System.out.println("true");
+        }
+        else {
+            System.out.println("false");
+        }
     }
 }

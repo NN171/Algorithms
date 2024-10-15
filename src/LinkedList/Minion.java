@@ -4,7 +4,7 @@ public class Minion {
     private int age;
     private String name;
     private int eyes;
-
+// age по возрастанию, name в алвафитном, eyes по убыванию
     public Minion(int age, String name, int eyes) {
         setAge(age);
         setName(name);
@@ -37,7 +37,7 @@ public class Minion {
 
     @Override
     public String toString() {
-        return "Minion " + name + ", " + age + " y.o.";
+        return "Minion " + name + ", " + age + " y.o., " + eyes + " eyes";
     }
 
     @Override
