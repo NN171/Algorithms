@@ -95,10 +95,6 @@ public class CustomStack<T> implements Iterable<T>, Cloneable {
         };
     }
 
-    private void setArray() {
-        array.clone();
-    }
-
     @Override
     public CustomStack<T> clone() throws CloneNotSupportedException {
         CustomStack<T> customStack = (CustomStack<T>) super.clone();

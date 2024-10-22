@@ -20,21 +20,27 @@ public class Main {
 
 //        LinkedListRealization<Minion> minionsLinkedList = new LinkedListRealization();
 //
-//        minionsLinkedList.add(bob, 0);
+//        minionsLinkedList.add(bob1, 0);
 //        minionsLinkedList.add(rob, 1);
 //        minionsLinkedList.add(jacob, 2);
-//        minionsLinkedList.add(jason, 3);
-//        minionsLinkedList.add(sam, 4);
+//        minionsLinkedList.add(jason, 2);
+//        minionsLinkedList.add(sam, 1);
+//
+//        minionsLinkedList.getFromStart();
+//        System.out.println();
 //
 //        minionsLinkedList.remove(2);
 //        minionsLinkedList.remove(3);
 //
+//        minionsLinkedList.getFromStart();
+//        System.out.println();
+//
 //        minionsLinkedList.edit(new Minion(51, "Donald", 1), 2);
 //
-////        minionsLinkedList.getFromEnd();
-////        System.out.println();
-////
-////        minionsLinkedList.getFromStart();
+//        minionsLinkedList.getFromEnd();
+//        System.out.println();
+//
+//        minionsLinkedList.getFromStart();
 //
 //        for (Minion minion : minionsLinkedList) {
 //            System.out.println(minion.toString());
@@ -54,12 +60,12 @@ public class Main {
         for (Minion minion : minionsList) {
             System.out.println(minion);
         }
-//
+
 //        System.out.println();
 
 //        CustomStack<Minion> stack = new CustomStack<>();
 //
-//        stack.push(bob);
+//        stack.push(bob1);
 //        stack.push(rob);
 //        stack.push(jacob);
 //        stack.push(jason);
@@ -100,25 +106,25 @@ public class Main {
 //        numStack.getStack();
 //        System.out.println();
 
-        final String brackets = "{[{[}]]}";
-
-        CustomStack<Character> numStack = new CustomStack<>();
-
-        for (char bracket : brackets.toCharArray()) {
-            if (bracket == '[' || bracket == '{' || bracket == '(') {
-                numStack.push(bracket);
-            }
-            else if (bracket == ']' && numStack.peek() == '['
-                    || bracket == '}' && numStack.peek() == '{'
-                    || bracket == ')' && numStack.peek() == '(') {
-                numStack.pop();
-            }
-        }
-        if (numStack.isEmpty()) {
-            System.out.println("true");
-        }
-        else {
-            System.out.println("false");
-        }
+//        final String brackets = "{[{[}]]}";
+//
+//        CustomStack<Character> numStack = new CustomStack<>();
+//
+//        for (char bracket : brackets.toCharArray()) {
+//            if (bracket == '[' || bracket == '{' || bracket == '(') {
+//                numStack.push(bracket);
+//            }
+//            else if (bracket == ']' && numStack.peek() == '['
+//                    || bracket == '}' && numStack.peek() == '{'
+//                    || bracket == ')' && numStack.peek() == '(') {
+//                numStack.pop();
+//            }
+//        }
+//        if (numStack.isEmpty()) {
+//            System.out.println("true");
+//        }
+//        else {
+//            System.out.println("false");
+//        }
     }
 }

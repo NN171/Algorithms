@@ -63,10 +63,10 @@ public class LinkedListRealization<T> implements Iterable<T> {
         if (index == 0) {
             addFirst(data);
         }
-        else if (index == size-1) {
+        else if (index == size) {
             addLast(data);
         }
-        else if (index > size/2){
+        else if (index < size/2){
             Node<T> newNode = new Node<>(data);
             Node<T> current = head;
 
