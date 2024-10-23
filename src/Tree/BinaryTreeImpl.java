@@ -7,11 +7,12 @@ import java.util.function.Consumer;
 
 public class BinaryTreeImpl<T> implements AbstractBinaryTree<T> {
     private T value;
-    private BinaryTreeImpl<T> parent;
-    private List<BinaryTreeImpl<T>> children;
+    private BinaryTreeImpl<T> left;
+    private BinaryTreeImpl<T> right;
 
     public BinaryTreeImpl() {
-        this.children = new ArrayList<>();
+        this.left = null;
+        this.right = null;
     }
 
     @Override
@@ -21,12 +22,12 @@ public class BinaryTreeImpl<T> implements AbstractBinaryTree<T> {
 
     @Override
     public AbstractBinaryTree<T> getLeft() {
-        return this.children.get(0);
+        return this.left;
     }
 
     @Override
     public AbstractBinaryTree<T> getRight() {
-        return this.children.get(1);
+        return this.right;
     }
 
     @Override
@@ -36,12 +37,51 @@ public class BinaryTreeImpl<T> implements AbstractBinaryTree<T> {
 
     @Override
     public String asIndentedPreOrder(int indent) {
-        return "";
+        List<T> elements = new ArrayList<>();
+        int depth = 0;
+
+        if (left != null) {
+            elements.add(left.value);
+            depth++;
+            asIndentedPreOrder(indent);
+        }
+        if (right != null) {
+            elements.add(right.value);
+            asIndentedPreOrder(indent);
+        }
+
+        return structurize(elements, indent, depth);
+    }
+
+    private String structurize(List<T> elements, int indent, int depth) {
+        StringBuilder sb = new StringBuilder();
+        int counter = 0;
+
+        while (counter++ < depth) {
+            int nodes = (counter+1)*2;
+            for (int i = 0; i < nodes; i++) {
+                sb.append(" ".repeat(depth - i)).append(elements).append(" ".repeat(indent));
+            }
+        }
+        return sb.toString();
     }
 
     @Override
     public List<AbstractBinaryTree<T>> preOrder() {
-        return List.of();
+        List<AbstractBinaryTree<T>> trees = new ArrayList<>();
+        preOrderCalc(trees);
+        return trees;
+    }
+
+    private void preOrderCalc(List<AbstractBinaryTree<T>> trees) {
+        trees.add(this);
+
+        if (left != null) {
+            left.preOrderCalc(trees);
+        }
+        if (right != null) {
+            right.preOrderCalc(trees);
+        }
     }
 
     @Override
